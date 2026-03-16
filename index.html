@@ -3,12 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinanceFlow – Studen(IILM)</title>
-<meta name="description" content="Track expenses day-by-day. Filter by UPI, GPay, Card or Cash. View insights for today, month, last month, 1 year, 6 years or custom dates.">
+
+<!-- ===== PRIMARY META ===== -->
+<title>FinanceFlow – Personal Finance Tracker for Students | IILM</title>
+<meta name="description" content="Track expenses day-by-day. Filter by UPI, GPay, PhonePe, Card or Cash. View spending insights for today, this month, 1 year or custom date ranges. Free for students.">
+<meta name="author" content="Pawan Dubey, IILM">
+<meta name="keywords" content="finance tracker, expense manager, UPI tracker, student budget, GPay expenses, IILM, personal finance India">
+
+<!-- ===== FAVICON (SVG inline — no external file needed) ===== -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23059669'/><text x='50%25' y='54%25' font-size='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif'>&#x20B9;</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23059669'/><text x='50%25' y='54%25' font-size='36' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif'>&#x20B9;</text></svg>">
+
+<!-- ===== OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ===== -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://pawandubey11.github.io/Finance-Management/">
+<meta property="og:title"       content="FinanceFlow – See Where Your Money Goes. Every Day.">
+<meta property="og:description" content="Track expenses by UPI, GPay, PhonePe, Card and Cash. Smart date filters, category insights, and platform-wise breakdowns — free for students.">
+<meta property="og:image"       content="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name"   content="FinanceFlow">
+<meta property="og:locale"      content="en_IN">
+
+<!-- ===== TWITTER CARD ===== -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="FinanceFlow – Personal Finance Tracker">
+<meta name="twitter:description" content="Track expenses day-by-day. Filter by UPI, GPay, PhonePe, Card, Cash. Free for students.">
+<meta name="twitter:image"       content="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop">
+
+<!-- ===== THEME COLOR (browser chrome on mobile) ===== -->
+<meta name="theme-color" content="#059669">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,8 +43,8 @@
   <div class="container nav-content">
     <h2 class="logo">Finance Manage by IILM Student </h2>
     <div>
-      <a href="#pricing" class="btn btn-outline">Watch Demo</a>
-      <a href="#pricing" class="btn btn-primary">Get Started Free</a>
+      <a href="#demo" class="btn btn-outline">Watch Demo</a>
+      <a href="app.html" class="btn btn-primary">Get Started Free</a>
     </div>
   </div>
 </header>
@@ -29,8 +55,8 @@
       <h1>See Where Your Money Goes. Every Day.</h1>
       <p>Track expenses day-by-day. Filter by UPI, GPay, PhonePe, Card, Cash. View insights for today, this month, last month, 1 year, 6 years or custom date ranges.</p>
       <div class="cta-group">
-        <a href="#pricing" class="btn btn-primary">Get Started Free</a>
-        <a href="#pricing" class="btn btn-outline">See Dashboard</a>
+        <a href="app.html" class="btn btn-primary">Get Started Free</a>
+        <a href="#demo" class="btn btn-outline">See Dashboard</a>
       </div>
     </div>
 
@@ -73,6 +99,117 @@
   </div>
 </section>
 
+<section id="demo" class="demo">
+  <div class="container">
+    <h2>See It In Action</h2>
+    <p class="demo-sub">A preview of the FinanceFlow dashboard — coming soon as a full app.</p>
+
+    <div class="demo-shell fade">
+
+      <!-- Topbar -->
+      <div class="demo-topbar">
+        <span class="demo-logo">&#128176; FinanceFlow</span>
+        <div class="demo-filters">
+          <button class="demo-chip active">Today</button>
+          <button class="demo-chip">This Month</button>
+          <button class="demo-chip">Last Month</button>
+          <button class="demo-chip">1 Year</button>
+          <button class="demo-chip">Custom</button>
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="demo-kpis">
+        <div class="demo-kpi">
+          <span class="kpi-label">Total Spent Today</span>
+          <span class="kpi-value">&#8377;1,240</span>
+        </div>
+        <div class="demo-kpi">
+          <span class="kpi-label">This Month</span>
+          <span class="kpi-value">&#8377;14,870</span>
+        </div>
+        <div class="demo-kpi">
+          <span class="kpi-label">Top Platform</span>
+          <span class="kpi-value">GPay</span>
+        </div>
+        <div class="demo-kpi">
+          <span class="kpi-label">Top Category</span>
+          <span class="kpi-value">Food</span>
+        </div>
+      </div>
+
+      <!-- Platform filter chips -->
+      <div class="demo-platform-row">
+        <span class="demo-platform-chip all">All</span>
+        <span class="demo-platform-chip">UPI</span>
+        <span class="demo-platform-chip">GPay</span>
+        <span class="demo-platform-chip">PhonePe</span>
+        <span class="demo-platform-chip">Paytm</span>
+        <span class="demo-platform-chip">Card</span>
+        <span class="demo-platform-chip">Cash</span>
+      </div>
+
+      <!-- Transaction list -->
+      <div class="demo-list">
+        <div class="demo-date-label">Today &#8212; 16 March 2026</div>
+        <div class="demo-txn">
+          <div class="txn-left">
+            <span class="txn-icon food">&#127828;</span>
+            <div>
+              <div class="txn-name">Zomato Order</div>
+              <div class="txn-meta">Food &nbsp;&middot;&nbsp; <span class="txn-platform gpay">GPay</span></div>
+            </div>
+          </div>
+          <span class="txn-amount">&#8722; &#8377;340</span>
+        </div>
+        <div class="demo-txn">
+          <div class="txn-left">
+            <span class="txn-icon travel">&#128652;</span>
+            <div>
+              <div class="txn-name">Metro Recharge</div>
+              <div class="txn-meta">Travel &nbsp;&middot;&nbsp; <span class="txn-platform paytm">Paytm</span></div>
+            </div>
+          </div>
+          <span class="txn-amount">&#8722; &#8377;200</span>
+        </div>
+        <div class="demo-txn">
+          <div class="txn-left">
+            <span class="txn-icon shop">&#128722;</span>
+            <div>
+              <div class="txn-name">Amazon Order</div>
+              <div class="txn-meta">Shopping &nbsp;&middot;&nbsp; <span class="txn-platform card">Card</span></div>
+            </div>
+          </div>
+          <span class="txn-amount">&#8722; &#8377;700</span>
+        </div>
+        <div class="demo-date-label">Yesterday &#8212; 15 March 2026</div>
+        <div class="demo-txn">
+          <div class="txn-left">
+            <span class="txn-icon food">&#9749;</span>
+            <div>
+              <div class="txn-name">Cafe Coffee Day</div>
+              <div class="txn-meta">Food &nbsp;&middot;&nbsp; <span class="txn-platform upi">UPI</span></div>
+            </div>
+          </div>
+          <span class="txn-amount">&#8722; &#8377;180</span>
+        </div>
+        <div class="demo-txn">
+          <div class="txn-left">
+            <span class="txn-icon cash">&#128181;</span>
+            <div>
+              <div class="txn-name">Auto Rickshaw</div>
+              <div class="txn-meta">Travel &nbsp;&middot;&nbsp; <span class="txn-platform cash">Cash</span></div>
+            </div>
+          </div>
+          <span class="txn-amount">&#8722; &#8377;80</span>
+        </div>
+      </div>
+
+      <div class="demo-coming-badge">&#128640; Full dashboard coming soon</div>
+    </div>
+  </div>
+</section>
+
 <section id="pricing" class="pricing">
   <div class="container">
     <h2>Simple Pricing</h2>
@@ -85,7 +222,7 @@
           <li>Monthly insights</li>
           <li>Platform tracking</li>
         </ul>
-        <a href="#" class="btn btn-primary">Get Started Free</a>
+        <a href="app.html" class="btn btn-primary">Get Started Free</a>
       </div>
 
       <div class="price-card highlight fade">
@@ -96,7 +233,7 @@
           <li>Custom date ranges</li>
           <li>Export reports</li>
         </ul>
-        <a href="#" class="btn btn-primary">Upgrade to Pro</a>
+        <a href="app.html" class="btn btn-primary">Upgrade to Pro</a>
       </div>
     </div>
   </div>
@@ -125,7 +262,7 @@
 </section>
 
 <footer>
-  <p>© 2026 FinanceFlow. All rights reserved.</p>
+  <p> 2026 FinanceFlow. All rights reserved (Pawan).</p>
 </footer>
 <script src="script.js"></script>
 </body>

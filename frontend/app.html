@@ -342,6 +342,10 @@ textarea { resize: vertical; min-height: 76px; }
   line-height: 1;
 }
 .kpi-val.green { color: var(--accent); }
+.kpi-card { transition: background 0.3s ease; }
+.kpi-card.flashing { background: var(--accent-lt) !important; }
+@keyframes kpi-pop { 0%{transform:scale(1)} 40%{transform:scale(1.06)} 100%{transform:scale(1)} }
+.kpi-val.popping { animation: kpi-pop 0.35s ease; }
 
 /* ============================================================
    TRANSACTION LIST
@@ -1093,11 +1097,46 @@ async function fetchKpis() {
   try {
     const data = await apiFetch('/analytics');
     const d    = data.data;
-    document.getElementById('kpi-total').innerHTML = fmtH(d.totalSpent);
-    document.getElementById('kpi-today').innerHTML = fmtH(d.todaySpent);
-    document.getElementById('kpi-month').innerHTML = fmtH(d.monthSpent);
-    document.getElementById('kpi-count').textContent = d.totalTransactions;
-  } catch (_) { /* KPI fallback silently */ }
+    updateKpiCards(d.totalSpent, d.todaySpent, d.monthSpent, d.totalTransactions);
+  } catch (_) {
+    // Fallback: compute KPIs from local expenses array
+    computeKpisLocally();
+  }
+}
+
+// Update KPI DOM elements and flash them to signal update
+function updateKpiCards(total, today, month, count) {
+  const ids  = ['kpi-total','kpi-today','kpi-month','kpi-count'];
+  const vals = [fmtH(total), fmtH(today), fmtH(month), String(count)];
+  ids.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = vals[i];
+    // Pop animation on the value
+    el.classList.remove('popping');
+    void el.offsetWidth; // reflow to restart animation
+    el.classList.add('popping');
+    setTimeout(() => el.classList.remove('popping'), 400);
+    // Flash the card background
+    const card = el.closest('.kpi-card');
+    if (card) {
+      card.classList.add('flashing');
+      setTimeout(() => card.classList.remove('flashing'), 700);
+    }
+  });
+}
+
+// Compute KPIs from local expenses (offline fallback)
+function computeKpisLocally() {
+  const today = todayStr();
+  const month = today.slice(0, 7);
+  let total = 0, todayAmt = 0, monthAmt = 0;
+  expenses.forEach(e => {
+    total += e.amount;
+    if (e.date === today) todayAmt += e.amount;
+    if (e.date.startsWith(month)) monthAmt += e.amount;
+  });
+  updateKpiCards(total, todayAmt, monthAmt, expenses.length);
 }
 
 // Build query params from current filters
@@ -1131,13 +1170,20 @@ async function handleSubmit() {
       await apiFetch(`/transactions/${editId}`, { method: 'PUT', body: JSON.stringify(payload) });
       toast('✓ Updated', 'warn');
       cancelEdit();
+      await fetchTransactions();
     } else {
       showLoading('Saving…');
-      await apiFetch('/transactions', { method: 'POST', body: JSON.stringify(payload) });
-      toast('✓ Expense added');
+      const res = await apiFetch('/transactions', { method: 'POST', body: JSON.stringify(payload) });
+      // Instantly inject into local array and update KPIs
+      const newTxn = (res && res.data) ? res.data : { _id: 'tmp_' + Date.now(), ...payload };
+      expenses.unshift(newTxn);
+      computeKpisLocally();
+      render();
+      toast('✓ ₹' + amount + ' added — dashboard updated!', 'ok');
       resetForm();
+      // Background sync
+      setTimeout(() => fetchKpis(), 300);
     }
-    await fetchTransactions();
   } catch (err) {
     toast('✗ ' + err.message, 'err');
   } finally {
@@ -1584,32 +1630,60 @@ function showSmsResult(type, html) {
 async function confirmSmsAdd() {
   if (!_parsedSms) return;
   const btn = document.querySelector('.sms-add-btn');
-  if (btn) btn.disabled = true;
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Adding…'; }
+
+  const snapshot = { ..._parsedSms };
 
   try {
     showLoading('Adding SMS transaction…');
-    await apiFetch('/transactions', {
+    const res = await apiFetch('/transactions', {
       method: 'POST',
       body: JSON.stringify({
-        amount:   _parsedSms.amount,
+        amount:   snapshot.amount,
         category: activeCat,
-        platform: _parsedSms.platform,
+        platform: snapshot.platform,
         source:   'SMS',
-        merchant: _parsedSms.merchant || null,
-        note:     _parsedSms.note || '',
-        date:     _parsedSms.date,
+        merchant: snapshot.merchant || null,
+        note:     snapshot.note || '',
+        date:     snapshot.date,
         ts:       Date.now(),
       }),
     });
-    toast('✅ SMS transaction added to dashboard!');
+
+    // Instantly inject into local expenses so KPIs update immediately
+    const newTxn = (res && res.data) ? res.data : {
+      _id: 'tmp_' + Date.now(),
+      amount:   snapshot.amount,
+      category: activeCat,
+      platform: snapshot.platform,
+      source:   'SMS',
+      merchant: snapshot.merchant || null,
+      note:     snapshot.note || '',
+      date:     snapshot.date,
+      ts:       Date.now(),
+    };
+    expenses.unshift(newTxn);
+
+    // Immediately recompute and flash KPIs
+    computeKpisLocally();
+
+    // Re-render transaction list instantly
+    render();
+
+    toast('✅ Added ₹' + snapshot.amount + ' — dashboard updated!', 'ok');
+
+    // Cleanup SMS UI
     _parsedSms = null;
     document.getElementById('sms-input').value = '';
     document.getElementById('sms-result').className = 'sms-result';
     resetForm();
-    await fetchTransactions();
+
+    // Background sync: get authoritative KPIs from server
+    setTimeout(() => fetchKpis(), 300);
+
   } catch (err) {
     toast('✗ ' + err.message, 'err');
-    if (btn) btn.disabled = false;
+    if (btn) { btn.disabled = false; btn.textContent = '✓ Add This Transaction Now'; }
   } finally {
     hideLoading();
   }

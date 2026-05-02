@@ -1,30 +1,17 @@
-# Dependencies
-node_modules/
-.npm
+# Backend / Frontend
+backend/node_modules/
+frontend/node_modules/
 
-# Environment
-.env
-.env.local
-.env.*.local
+# Android build outputs
+android/app/build/
+android/app/.cxx/
+android/.idea/
+android/*.iml
 
-# Build outputs
-dist/
-build/
+# IDE
+.vscode/
+.idea/
 
-# Docker
-.docker/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-logs/
-
-# Android
-android/.gradle/
-android/build/
-android/local.properties
-*.apk
-*.aab
+# Secrets
+backend/.env
+frontend/.env

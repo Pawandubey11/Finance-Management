@@ -1,53 +1,28 @@
 version: "3.9"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# FinanceFlow — Docker Compose
-#
-# Usage:
-#   docker-compose up --build          # start all services
-#   docker-compose up --build -d       # detached mode
-#   docker-compose down -v             # stop and remove volumes
-#
-# Services:
-#   frontend  → http://localhost:80
-#   backend   → http://localhost:5000
-#   mongo     → mongodb://localhost:27017  (only if MONGODB_URI not set)
-# ─────────────────────────────────────────────────────────────────────────────
-
 services:
 
-  # ── Frontend (Nginx) ────────────────────────────────────────────────────────
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    build: ./frontend
     container_name: financeflow-frontend
     ports:
       - "80:80"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     restart: unless-stopped
     networks:
       - financeflow-net
 
-  # ── Backend (Node.js / Express) ─────────────────────────────────────────────
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    build: ./backend
     container_name: financeflow-backend
-    ports:
-      - "5000:5000"
     env_file:
       - ./backend/.env
     environment:
       - NODE_ENV=production
-    depends_on:
-      - mongo
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:5000/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -55,34 +30,6 @@ services:
     networks:
       - financeflow-net
 
-  # ── MongoDB (local fallback — skip if using MongoDB Atlas) ──────────────────
-  # If you are using MongoDB Atlas, you can remove this service entirely and
-  # keep only the MONGODB_URI in backend/.env pointing to Atlas.
-  mongo:
-    image: mongo:7.0
-    container_name: financeflow-mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    environment:
-      MONGO_INITDB_DATABASE: financeflow
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 30s
-    networks:
-      - financeflow-net
-
-# ── Volumes ──────────────────────────────────────────────────────────────────
-volumes:
-  mongo-data:
-    driver: local
-
-# ── Networks ─────────────────────────────────────────────────────────────────
 networks:
   financeflow-net:
     driver: bridge

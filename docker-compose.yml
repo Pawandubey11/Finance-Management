@@ -1,3 +1,2572 @@
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FinanceFlow — Docker Compose
+#
+# Usage:
+#   docker-compose up --build          # start all services
+#   docker-compose up --build -d       # detached mode
+#   docker-compose down -v             # stop and remove volumes
+#
+# Services:
+#   frontend  → http://localhost:80
+#   backend   → http://localhost:5000
+#   mongo     → mongodb://localhost:27017  (only if MONGODB_URI not set)
+# ─────────────────────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge──────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgeontend
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge ─────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgeckend
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge, "http://localhost:5000/health"]
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgekip if using MongoDB Atlas) ──────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge, you can remove this service entirely and
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgeackend/.env pointing to Atlas.
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgengo
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgeceflow
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridgeeval", "db.adminCommand('ping')"]
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge─────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge─────────────────────────────────────────────
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
+version: "3.9"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: financeflow-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - financeflow-net
+
+  backend:
+    build: ./backend
+    container_name: financeflow-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - financeflow-net
+
+networks:
+  financeflow-net:
+    driver: bridge
 version: "3.9"
 
 services:

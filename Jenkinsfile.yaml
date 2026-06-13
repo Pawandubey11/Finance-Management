@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = 'dockerhub-creds'
-        DOCKERHUB_REPO = 'your_dockerhub_username'
+        DOCKERHUB_REPO = 'pawandubey18'
         BACKEND_IMAGE = "${DOCKERHUB_REPO}/financeflow-backend"
         FRONTEND_IMAGE = "${DOCKERHUB_REPO}/financeflow-frontend"
     }

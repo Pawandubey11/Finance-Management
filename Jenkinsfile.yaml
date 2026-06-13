@@ -12,7 +12,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/Pawandubey11/Finance-Management.git'
+                 git branch: 'main', url: 'https://github.com/Pawandubey11/Finance-Management.git'
             }
         }
 

@@ -1,5 +1,6 @@
 FROM nginx:1.27-alpine
 
+
 LABEL maintainer="Pawan Dubey <pawandubey620438@iilm.edu>"
 LABEL description="FinanceFlow Frontend (Nginx)"
 
